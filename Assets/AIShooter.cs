@@ -26,8 +26,11 @@ public class AIShooter : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-        GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, gunPoint2.rotation);
+        Quaternion rot = gunPoint.rotation * Quaternion.Euler(0, 0f, 90f);
+        Quaternion rot2 = gunPoint2.rotation * Quaternion.Euler(0, 0f, 90f);
+
+        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, rot);
+        GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, rot2);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(gunPoint.up * bulletForce, ForceMode2D.Impulse);
@@ -35,6 +38,7 @@ public class AIShooter : MonoBehaviour
         
         Rigidbody2D rb2 = bullet2.GetComponent<Rigidbody2D>();
         rb2.AddForce(gunPoint2.up * bulletForce, ForceMode2D.Impulse);
+
         canShoot = false;
         yield return new WaitForSeconds(0.5f);
         canShoot = true;
@@ -45,13 +49,15 @@ public class AIShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, hittableradius*10, layertohit);
+        
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, hittableradius*10, layertohit);
         //the layer will only be the player
         for (int i = 0; i < collider.Length; i++)
         {
-            
-            if(collider[i].gameObject.CompareTag("Player"))
+            Debug.Log("I fucking work");
+            if (collider[i].gameObject.CompareTag("Player"))
             {
+                
                 //Vector3 lookdir = collider[i].gameObject.transform.position - transform.position;
 
                 //float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;

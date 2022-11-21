@@ -269,7 +269,6 @@ namespace Pathfinding {
 		/// So when the agent is close to the destination this method will typically be called every <see cref="repathRate"/> seconds.
 		/// </summary>
 		public virtual void OnTargetReached () {
-			//PUTHERE
 		}
 
 		/// <summary>

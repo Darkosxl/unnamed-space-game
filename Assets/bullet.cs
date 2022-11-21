@@ -11,7 +11,7 @@ public class bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
       
-        GameObject fx = Instantiate(hitfx, transform.position, Quaternion.identity);
+        //GameObject fx = Instantiate(hitfx, transform.position, Quaternion.identity);
 
         if ( collision.transform.tag == "Enemy" || collision.transform.tag == "Player")
         {
@@ -20,14 +20,18 @@ public class bullet : MonoBehaviour
         }
 
 
-        Destroy(fx, 5f);
         Destroy(gameObject);
-
+    //    Destroy(fx, 5f);
+    
+    }
+    void Start()
+    {
+        Destroy(gameObject, 4);
     }
 
     // Update is called once per frame
     void Update()
     {
-     Destroy(gameObject, 10);
+ 
     }
 }

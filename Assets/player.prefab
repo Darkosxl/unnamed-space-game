@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 866027462878694709}
   - component: {fileID: 866027462878694696}
   - component: {fileID: 1301362151922982585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   expPoint: {fileID: 866027464147617704}
   bulletPrefab: {fileID: 8944692285870493264, guid: ed886a466b639b74ca944383bef4d3c2, type: 3}
   bullet2Prefab: {fileID: 8147420206151530672, guid: 61f0a8893cefbec409664912f9b9838c, type: 3}
-  bulletForce: 10
+  bulletForce: 200
 --- !u!50 &866027462878694709
 Rigidbody2D:
   serializedVersion: 4
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &866027462878694696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,9 +187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa49b100d198954e91c9cb2990d803b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  MP: 50
-  nitro: 50
+  type: 1
+  maxMP: 200
+  maxHP: 100
+  maxNitro: 100
+  hpbar: {fileID: 0}
+  nitrobar: {fileID: 0}
+  manabar: {fileID: 0}
 --- !u!1 &866027463859039767
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866027463859039766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866027464147617704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: exppoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866027464510112579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject enemyprefab;
     public float spawnerinterval;
     public float patternnum;
+    public float enemynum;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(interval);
             int i = 0;
-            while (i < 5)
+            while (i < enemynum)
             {
                 GameObject newEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
                 i++;
@@ -36,7 +37,7 @@ public class Spawner : MonoBehaviour
             }
             i = 0;
             yield return new WaitForSeconds(3f);
-            while (i < 5)
+            while (i < enemynum)
             {
                 GameObject newEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
                 i++;
@@ -44,7 +45,7 @@ public class Spawner : MonoBehaviour
             }
             yield return new WaitForSeconds(3f);
             i = 0;
-            while (i < 10)
+            while (i < enemynum*2)
             {
                 GameObject newEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
                 i++;

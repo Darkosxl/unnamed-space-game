@@ -39,7 +39,7 @@ public class Shooting : MonoBehaviour
             ExpShoot();
             gameObject.GetComponent<CharacterStats>().useAmmo(20f);
         }
- 
+        
 
     }
     void ExpShoot()
@@ -51,14 +51,19 @@ public class Shooting : MonoBehaviour
     }
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-        GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, gunPoint2.rotation);
+        //Vector2 rot = gunPoint.rotation.eulerAngles;
+        //rot = new Vector2(rot.x, rot.y + 90);
+        //rot = Quaternion.Euler(rot);
+        Quaternion rot = gunPoint.rotation * Quaternion.Euler(0, 0f, 90f);
+        //Quaternion actualrotation = gunPoint.rotation + ;
+        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, rot);
+       // GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, gunPoint2.rotation);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(gunPoint.up * bulletForce, ForceMode2D.Impulse);
 
         
-        Rigidbody2D rb2 = bullet2.GetComponent<Rigidbody2D>();
-        rb2.AddForce(gunPoint2.up * bulletForce, ForceMode2D.Impulse);
+       // Rigidbody2D rb2 = bullet2.GetComponent<Rigidbody2D>();
+       // rb2.AddForce(gunPoint2.up * bulletForce, ForceMode2D.Impulse);
     }
 }
