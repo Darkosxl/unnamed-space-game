@@ -11,7 +11,7 @@ public class AIShooter : MonoBehaviour
     bool canShoot = true;
     public GameObject bulletPrefab;
     public GameObject bullet2Prefab;
-
+    public ObjectPooler op;
     public Rigidbody2D rb;
 
 
@@ -29,8 +29,23 @@ public class AIShooter : MonoBehaviour
         Quaternion rot = gunPoint.rotation * Quaternion.Euler(0, 0f, 90f);
         Quaternion rot2 = gunPoint2.rotation * Quaternion.Euler(0, 0f, 90f);
 
-        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, rot);
-        GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, rot2);
+        //GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, rot);
+        //GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, rot2);
+
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObjectEnemy();
+        if (bullet != null)
+        {
+            bullet.transform.position = gunPoint.position;
+            bullet.transform.rotation = rot;
+            bullet.SetActive(true);
+        }
+        GameObject bullet2 = ObjectPooler.SharedInstance.GetPooledObjectEnemy();
+        if (bullet2 != null)
+        {
+            bullet2.transform.position = gunPoint2.position;
+            bullet2.transform.rotation = rot2;
+            bullet2.SetActive(true);
+        };
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(gunPoint.up * bulletForce, ForceMode2D.Impulse);

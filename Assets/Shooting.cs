@@ -56,8 +56,16 @@ public class Shooting : MonoBehaviour
         //rot = Quaternion.Euler(rot);
         Quaternion rot = gunPoint.rotation * Quaternion.Euler(0, 0f, 90f);
         //Quaternion actualrotation = gunPoint.rotation + ;
-        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, rot);
-       // GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, gunPoint2.rotation);
+       // GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, rot);
+
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        if (bullet != null)
+        {
+            bullet.transform.position = gunPoint.position;
+            bullet.transform.rotation = rot;
+            bullet.SetActive(true);
+        }
+        // GameObject bullet2 = Instantiate(bulletPrefab, gunPoint2.position, gunPoint2.rotation);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(gunPoint.up * bulletForce, ForceMode2D.Impulse);

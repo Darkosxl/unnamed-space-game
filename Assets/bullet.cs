@@ -20,13 +20,13 @@ public class bullet : MonoBehaviour
         }
 
 
-        Destroy(gameObject);
-    //    Destroy(fx, 5f);
-    
+      gameObject.SetActive(false);
+        //    Destroy(fx, 5f);
+
     }
     void Start()
     {
-        Destroy(gameObject, 4);
+        
     }
 
     // Update is called once per frame
