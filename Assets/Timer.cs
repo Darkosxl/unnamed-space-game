@@ -7,27 +7,16 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 10;
     public bool timerIsRunning = false;
     public Text timeText;
+    public bool isTimerActive = false;
     private void Start()
     {
+        timeText.gameObject.SetActive(false);
         // Starts the timer automatically
-        timerIsRunning = true;
+        //timerIsRunning = true;
     }
     void Update()
     {
-        if (timerIsRunning)
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
-        }
+        gameTimer();
         DisplayTime(timeRemaining);
     }
     public void DisplayTime(float timeToDisplay)
@@ -44,6 +33,23 @@ public class Timer : MonoBehaviour
         {
             timeText.text = string.Format("{0}{1:00}", minutes, seconds);
             timeText.text = timeText.text.Substring(timeText.text.Length - 2, timeText.text.Length - 1);
+        }
+    }
+    public void gameTimer()
+    {
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
         }
     }
 }
