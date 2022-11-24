@@ -5,14 +5,14 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject enemyprefab;
-    public float spawnerinterval;
-    public float round;
-    public float enemynum;
+    public GameObject[] enemy;
+    public GameObject[] activenemies;
+  
+    
 
     void Start()
     {
-        StartCoroutine(spawnEnemy(spawnerinterval, enemyprefab,round));
+        
     }
 
     // Update is called once per frame
@@ -23,61 +23,121 @@ public class Spawner : MonoBehaviour
     //pattern 1: hit 5, wait 2 sec, hit another 5, wait 1 sec, hit 10
     //pattern 2: hit 10,
     //pattern 3: hit with the usual
-    public IEnumerator spawnEnemy(float interval, GameObject[] enemy, float round)
+    public IEnumerator spawnEnemy(float round)
     {
 
-        if (round == 1)
+    if (round == 1)
+    {
+        yield return new WaitForSeconds(2f);
+        float aoe = 45;
+
+        float total = aoe;
+        while (aoe > total * (5 / 9))
         {
-            yield return new WaitForSeconds(interval);
-            int amountofenemies = 60;
+            // INTRODUCTION OF ENEMY TYPE 0
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.7f);
+        }
+  
+        yield return new WaitForSeconds(5f);
+        while (aoe > total * 4 / 9)
+        {
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(7f);
 
-            int total = amountofenemies;
-            while  (amountofenemies > total*(5/6))
-            {
-                // INTRODUCTION OF ENEMY TYPE 0
-                GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
-                amountofenemies--;
-                yield return new WaitForSeconds(0.7f);
-            }
+        while (aoe > total * 3 / 9)
+        {
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.2f);
+            // INTRODUCTION OF ENEMY TYPE 1
+            GameObject newEnemy2 = Instantiate(enemy[1], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        while (aoe > 0)
+
+        {
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.1f);
+            GameObject newEnemy2 = Instantiate(enemy[1], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+    if(round == 2)
+    {
+        float aoe = 60;
+        yield return new WaitForSeconds(2f);
+        float total = aoe;
     
+        while (aoe > total * (5 / 6))
+        {
+            // INTRODUCTION OF ENEMY TYPE 0
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.7f);
+        }
+
+        yield return new WaitForSeconds(3f);
+        while (aoe > total * 3 / 6)
+        {
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(9f);
+
+        while (aoe > total * 1 / 6)
+        {
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.5f);
+            // INTRODUCTION OF ENEMY TYPE 1
+            GameObject newEnemy2 = Instantiate(enemy[1], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.5f);
+        }
             yield return new WaitForSeconds(5f);
-            while (amountofenemies > total* 4/6)
-            {
-                GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
-                amountofenemies--;
-                yield return new WaitForSeconds(0.1f);
-            }
-            yield return new WaitForSeconds(7f);
- 
-            while (amountofenemies > total*3/6)
-            {
-                GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
-                amountofenemies--;
-                yield return new WaitForSeconds(0.2f);
-                // INTRODUCTION OF ENEMY TYPE 1
-                GameObject newEnemy = Instantiate(enemy[1], transform.position, Quaternion.identity);
-                amountofenemies--;
-                yield return new WaitForSeconds(0.3f);
-            }
 
-            while(amountofenemies < 0)
+        while (aoe > 0)
+        {
+            GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.1f);
+            GameObject newEnemy2 = Instantiate(enemy[1], transform.position, Quaternion.identity);
+            aoe--;
+            yield return new WaitForSeconds(0.2f);
+        }
 
-            {
-                GameObject newEnemy = Instantiate(enemy[0], transform.position, Quaternion.identity);
-                amountofenemies--;
-                yield return new WaitForSeconds(0.1f);
-                GameObject newEnemy = Instantiate(enemy[1], transform.position, Quaternion.identity);
-                amountofenemies--;
-                yield return new WaitForSeconds(0.2f);
-            }
+    }
+    if(round == 3)
+    {
+     //introduce enemy type 2
+    }
+    if(round == 4)
+    {
+    //introduce enemy type 3
+    }
+        if (round == 5)
+    {
+        //spawn boss
+    }
+            
 
 
 
-            yield return new WaitForSeconds(interval);
+          
 
 
             //StartCoroutine(spawnEnemy(interval, enemy,patternnum));
-        }
+       
        /* else if (pattern == 2)
         {
             yield return new WaitForSeconds(interval);
