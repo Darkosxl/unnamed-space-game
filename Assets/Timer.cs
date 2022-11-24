@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public bool isTimerActive = false;
     private void Start()
     {
-        timeText.gameObject.SetActive(false);
+        timeText.gameObject.SetActive(true);
         // Starts the timer automatically
         //timerIsRunning = true;
     }

@@ -2400,8 +2400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48.727, y: 23.73}
-  m_SizeDelta: {x: 356.272, y: 127.416}
+  m_AnchoredPosition: {x: 46.177, y: 24.169}
+  m_SizeDelta: {x: 324.019, y: 122.607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892533446
 MonoBehaviour:
@@ -2415,10 +2415,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea6906087ad62f4ba9f33b73055c496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 0
-  timerIsRunning: 0
+  timeRemaining: 50
+  timerIsRunning: 1
   timeText: {fileID: 892533447}
-  isTimerActive: 0
+  isTimerActive: 1
 --- !u!114 &892533447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3819,8 +3819,7 @@ MonoBehaviour:
   enemy:
   - {fileID: 855471902}
   - {fileID: 855471902}
-  spawnerinterval: 0
-  enemynum: 0
+  activenemies: []
 --- !u!4 &1741404245
 Transform:
   m_ObjectHideFlags: 0
