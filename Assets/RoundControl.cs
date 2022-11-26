@@ -6,7 +6,7 @@ public class RoundControl : MonoBehaviour
 {
     public Spawner[] spwns;
     public bool start;
-    public int round;
+    public static int round;
 
     // Start is called before the first frame update
     void Start()
