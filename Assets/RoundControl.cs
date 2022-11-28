@@ -17,7 +17,7 @@ public class RoundControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Cancel"))
         {
             Debug.Log("ÇALIÞ KÖLE");
          RoundStart(round);

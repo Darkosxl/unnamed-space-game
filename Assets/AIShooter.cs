@@ -69,7 +69,7 @@ public class AIShooter : MonoBehaviour
         //the layer will only be the player
         for (int i = 0; i < collider.Length; i++)
         {
-            Debug.Log("I fucking work");
+           
             if (collider[i].gameObject.CompareTag("Player"))
             {
                 
