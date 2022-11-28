@@ -7,6 +7,8 @@ public class CameraMovementv2 : MonoBehaviour
     public Transform character;
 
     private Vector3 moveTemp;
+    public Transform canv;
+
 
     public float speed = 3;
     public float xDifference;
@@ -30,8 +32,12 @@ public class CameraMovementv2 : MonoBehaviour
             
             float x = character.transform.position.x;
             float y = character.transform.position.y;
-            x = Mathf.Clamp(x, 542, 552);
-            y = Mathf.Clamp(y, 206, 224);
+
+            float h = canv.GetComponent<RectTransform>().rect.height;
+            float w = canv.GetComponent<RectTransform>().rect.width;
+
+            x = Mathf.Clamp(x, canv.position.x,canv.position.x + w);
+            y = Mathf.Clamp(y, canv.position.y, canv.position.y + h);
             moveTemp = character.transform.position;
             moveTemp.x = x;
             moveTemp.y = y;
